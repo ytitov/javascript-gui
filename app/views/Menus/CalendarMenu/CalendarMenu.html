@@ -1,0 +1,88 @@
+<!--<div class = "calendar-menu-container">-->
+	
+	
+	<!--the state may have to be an input	-->
+	<div *ngIf = "calendarService.creatingAppointment"
+		class = "info-box" style = "position: relative; width: 100%;">
+		First, select date and employee, then click on time you would like the appointment
+		to start
+		<button class = "button"
+		(click) = "cancelAddAppointmentClicked($event)">
+		Cancel </button>
+	</div>
+	
+	<div align = "left"
+	style = "position: absolute" *ngIf = "!calendarService.creatingAppointment">
+	
+	
+	<increment-button
+		[titleLabel]="'Day view'"
+		[isSelected]="isDayViewSelected"
+		(minusClicked)="dayViewMinusClicked($event)"
+		(plusClicked)="dayViewPlusClicked($event)"
+		(clicked)="dayViewClicked($event)"
+		>
+		</increment-button>
+		
+	<increment-button
+		[titleLabel]="'Week view'"
+		[isSelected]="isWeekViewSelected"
+		(minusClicked)="weekViewMinusClicked($event)"
+		(plusClicked)="weekViewPlusClicked($event)"
+		(clicked)="weekViewClicked($event)"
+		>
+		</increment-button>
+
+<!--calendar date adjust buttons: -->
+
+	
+	 
+	 
+	<button class = "button" [class.selected] = "viewOnlyMe"
+		(click)="viewOnlyMeClicked()">
+		View Only Me</button>
+		
+	<button class = "button" [class.selected] = "viewEveryone"
+		(click)="viewEveryoneClicked()">
+		View Everyone</button>
+		
+		
+		
+	<!--<div> -->
+		Selected Employee:
+		<button class = "button"
+			(click)="addAppointmentClicked()">
+			<div style = "position: relative">
+			Create Appointment</div></button>
+		
+	<!--</div>-->
+	
+	
+		
+		<div> Adjust Calendar: </div>
+		
+	<increment-button 
+		[titleLabel]="calendarService.getStartDate().getDate()"
+		(minusClicked)="minusDayClicked($event)"
+		(plusClicked)="plusDayClicked($event)"
+		>
+		</increment-button>
+		
+	<increment-button
+		[titleLabel]="calendarService.monthNames[calendarService.getStartDate().getMonth()]"
+		(minusClicked)="minusMonthClicked($event)"
+	  (plusClicked)="plusMonthClicked($event)">
+		</increment-button>
+		
+	<increment-button
+	 [titleLabel]="calendarService.getStartDate().getFullYear()"
+	 (minusClicked)="minusYearClicked($event)"
+	 (plusClicked)="plusYearClicked($event)">
+	 </increment-button>
+		
+	</div>
+	
+	
+	 
+	
+	

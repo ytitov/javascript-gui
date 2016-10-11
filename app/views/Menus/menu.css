@@ -1,0 +1,53 @@
+.menu-container {
+	width: 100%; position: fixed;
+	top: 0px; left: 0px; background-color: orange;
+}
+
+.menu-container-border {
+	top: 4; right: 4; bottom: 4; left: 4; 
+	position: relative;
+}
+
+.calendar-menu-container {
+	height: 100%; position: relative;
+	top: 0px; left: 0px; background-color: white;
+	/*padding: 4px;*/
+	width: 100%;
+}
+
+.button {
+	display: inline-block;
+	min-width: 4cm;
+	
+	background-color: slategrey;
+	/*spac: 1px;*/
+	border-style: solid;
+	border-radius: 6mm 0mm 6mm 0mm;
+	border-width: 3px 3px 3px 3px;
+	border-color: black;
+	margin-bottom: 1mm;
+}
+
+.button:active {
+	border-color: yellow;
+}
+
+.button.selected {
+	border-color: darkred;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.info-box {
+	border-width: 2px; border-style: solid; border-color: yellowgreen;
+	top: 0px; bottom: 0px; left: 0px; right: 0px;
+	animation: fadein 500ms linear forwards;
+  /*animation: fadeinout 4s linear forwards;*/
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

@@ -1,0 +1,87 @@
+<!--to get the scroll signal:
+(window:scroll)="viewPosition($event)-->
+
+
+<div>
+
+<div style="position: relative;" (mouseleave) = "mouseLeftCalendar()">
+
+
+
+
+
+
+
+
+
+	<!--The time labels-->
+	<!--to get these to scroll vertically and stay put horizontally, look at viewPosition
+	using window:scroll-->
+	<!--TODO: modify on hover function of the background, to also highlight the timeslots on the left-->
+	<div style = "position:absolute; background-color: yellow"
+		[style.z-index]="9"  (window:scroll) = "viewPosition($event)" [style.left] = "scrollXPosition">
+		
+	<button [class.hovering]="item.titleLabel === hoveringTimeLabel" (mouseenter) = "highlightTitleLabel(item.titleLabel)"
+		class="time-label" [style.left]="item.pos.x" [style.top]="item.pos.y" [style.width]="widthOfTimeLabels" [style.height]="item.pos.height"
+		style="position: absolute; " [style.font-size.px]="calendarService.timeLabelFontSize" *ngFor="let item of calendarService.timeLabelList"
+		(click)="selectTimeClicked(item.titleLabel)">
+		<div>{{item.titleLabel}}</div>
+	</button></div>
+	
+	<button [class.hovering]="item.titleLabel === hoveringTimeLabel" (mouseenter) = "highlightTitleLabel(item.titleLabel)"
+		class="time-label" [style.left]="item.pos.x" [style.top]="item.pos.y" [style.width]="calendarService.totalWidth" [style.height]="item.pos.height"
+		style="position: absolute; " [style.font-size.px]="calendarService.timeLabelFontSize" *ngFor="let item of calendarService.timeLabelList"
+		(click)="selectTimeClicked(item.titleLabel)" (mousemove) = "mouseHoverTime($event, item.titleLabel)">
+		<!--<div style = "" >{{item.titleLabel}}</div>-->
+		
+		
+	</button>
+
+
+
+
+	<!--the actual appointments-->
+
+	<div class="element" [style.left]="item.pos.x" [style.top]="item.pos.y" 
+		[style.width]="item.pos.width" [style.height]="item.pos.height"
+		(mouseover) = "mouseHoverAppointment ($event, item.id)"
+		[class.disabled] = "calendarService.creatingAppointment"
+		style="position: absolute" *ngFor="let item of calendarService.itemList">
+		<div>start: {{item.object.getStartLabel()}}</div>
+		<div> x: {{item.pos.x}} </div>
+		<div> y: {{item.pos.y}} </div>
+		<div style="position: relative;" [style.top]="item.pos.height-80">
+			<label [style.width]="item.pos.width" style="text-align: right">end: {{item.object.getEndLabel()}}</label>
+		</div>
+	</div>
+
+	<!--LABELS FOR THE DATE COLUMNS:-->
+
+	<button class="date-col-element" [style.left]="item.pos.x" [style.top]="item.pos.y+scrollYPosition" [style.width]="item.pos.width" [style.height]="item.pos.height"
+		style="position: absolute" *ngFor="let item of calendarService.labelList" [class.selected]="item.titleLabel === selectedDateLabel"
+		(click)="selectDateClicked(item.titleLabel)">
+		<div
+			
+			item.isSelected>{{item.titleLabel}}</div>
+	</button>
+
+	<!--the plus on item.pos.x and minus on width-->
+	<!--LABELS FOR USERS-->
+	<button class="user-col-element" [style.left]="item.pos.x" [style.top]="item.pos.y+scrollYPosition" [style.width]="item.pos.width" [style.height]="item.pos.height"
+		style="position: absolute; display: table" *ngFor="let item of calendarService.userLabelList" [class.selected]="item.id === selectedEmployeeID"
+		(click)="selectEmployeeClicked(item.id, item.parentId)">
+		<div item.isSelected> {{item.titleLabel}} </div>
+	</button>
+	
+
+<!--this follows the mouse cursor and aids in telling you what time you are hovering over-->
+	
+	<div style= "position: absolute;" [style.left]= "mouseX" [style.top] = "mouseY"
+[hidden] = "mouseInTimeLabelHide"> 
+	<div style = "border-color: black; border-width: 1px">
+		Time: {{mouseInTimeLabel}} </div></div>
+
+</div>
+
+
+</div>

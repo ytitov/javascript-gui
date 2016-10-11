@@ -1,0 +1,111 @@
+
+<!--TODO: this thing is looking weird.  especially with max-height of 70
+seems broken.  good nuff for now-->
+<div style = "display: block; float: left; width: 30%; height: 70%;
+margin-bottom: 2mm;
+overflow-y:auto">
+
+<input
+	class = "search-input"
+	[(ngModel)]="searchClientInput" placeholder="Search clients"
+	(ngModelChange)="searchClientInputChanged()">
+	
+	<div class="clear"></div>
+	
+	<button 
+	class = "dialog-button-menu"
+	style = "float: right; margin-bottom: 2mm"
+	(click)="loadAllClients()">Load All Clients</button>
+	
+	<button *ngFor="let item of clientList"
+	style = "width: 100%"
+	(click) = "clientClicked(item)">
+		{{item.getLabel()}}
+	</button>
+	
+</div>
+
+
+<!--The form:-->
+
+<div style = "display: block; float: left; width: 68%; height: 70%;
+overflow-y:auto; margin-left: 2%;">
+
+
+<!--The menu buttons:-->
+
+<div menu class="tile_div">
+	
+	
+	<button *ngIf = "showAddButton"
+		class = "dialog-button-menu"
+		(click)="addClientButtonClicked()">Add Client</button>
+	
+	
+	<button *ngIf = "showEditButton"
+		class = "dialog-button-menu"
+		(click)="editButtonClicked()">Edit</button>
+	
+	
+	<button *ngIf = "showSubmitButton"
+		class = "dialog-button-menu"
+		(click)="submitClicked()">Submit</button>
+	
+	
+	<button *ngIf = "showDeleteButton"
+		class = "dialog-button-menu"
+		(click)="deleteButtonClicked()">{{delButtonLabel}}</button>
+	
+	<button *ngIf = "showCancelButton"
+		class = "dialog-button-menu"
+		(click) = "cancelButtonClicked()">Cancel</button>
+	
+	
+	
+	
+	</div> <!-- end menu -->
+	
+	<!--the form:-->
+	
+	<person-edit-component
+	[(userId)]="userId"
+	[(phone)]="phone"
+	[(firstName)]="firstName"
+	[(lastName)]="lastName"
+	[(address1)]="address1"
+	[(address2)]="address2"
+	[(city)]="city"
+	[(state)]="state"
+	[(zip)]="zip"
+	[(email)]="email"
+	[canEditFields]="canEditFields"
+	[noteList] = "noteList"
+	(addNoteClicked) = "handleAddNoteClicked($event)"
+	(delNoteClicked) = "handleDelNoteClicked($event)">
+		</person-edit-component>
+		
+	<!--<div *ngIf = "stateModifyingClient">
+		<label>Enter a new note:</label>
+		<textarea
+			style = "width: 100%"
+			[disabled] = "!canEditFields"
+			[(ngModel)] = "noteString">
+		</textarea>
+		<button
+			style = "float: right;"
+			class = "dialog-button-menu"
+			(click) = "addNoteButtonClicked()"> Add Note
+		</button>
+	</div>
+	
+	
+	<div *ngFor = "let note of noteList">
+		<div style = "border-style: solid; border-width: 0 0 1 0; width: 100%">
+			Entered on: {{note.dateCreated.toDateString()}} - by: {{note.employeeId}}
+		</div>
+		<div style = "width: 100%">
+			{{note.content}}
+		</div>
+	</div>-->
+
+</div>

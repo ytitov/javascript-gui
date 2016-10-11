@@ -1,0 +1,72 @@
+<!--Manager popup-->
+	<dialog-component
+	(cancel) = "cancelClicked()"
+	(accept) = "acceptClicked()"
+	[cancelText] = "cancelText"
+	[showAccept] = "false"
+	>
+		<div title>Manage Dialog</div>
+		<div menu>
+			<!--All of the buttons for the menu-->
+			<!--Prob just use ngFor here for buttons, and they will pop up based on user
+			priveleges-->
+			
+			<button class = "button"
+				*ngIf = "showEmployeeButton"
+				(click) = "employeeClicked()">
+				Employee
+				</button>
+				
+			<button
+				*ngIf = "showClientButton"
+				(click) = "clientClicked()">
+				Client
+			</button>
+			
+			<button
+				*ngIf = "showProductButton"
+				(click) = "productClicked()">
+				Product
+			</button>
+			
+			<button
+				*ngIf = "showServiceButton"
+				(click) = "serviceClicked()">
+				Service
+			</button>
+			
+			<button
+				*ngIf = "showScheduleButton"
+				(click) = "scheduleClicked()">
+				Schedule
+			</button>
+			
+		</div>
+		<div body>
+			
+			<!--The employee menu-->
+			<employee-component
+			*ngIf = "activeMenu == employeeMenuID">
+			</employee-component>
+			
+			<!--The client menu-->
+			<!--This will obviously be inside the client component, just testing
+			the person edit component-->
+			<client-component 
+			*ngIf = "activeMenu == clientMenuID">
+			</client-component>
+			
+			<div *ngIf = "activeMenu == productMenuID"
+			> Product Menu
+			</div>
+			
+			<service-component *ngIf = "activeMenu == serviceMenuID"
+			> Service Menu
+			</service-component>
+			
+			<div *ngIf = "activeMenu == scheduleMenuID"
+			> Schedule Menu
+			</div>
+			
+		</div>
+	</dialog-component>

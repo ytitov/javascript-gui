@@ -1,0 +1,37 @@
+- must update client component to work with Person.component just like 
+	what Employee.component is doing at this point
+
+- figure out where to put cleanRegex function which is currently
+	inside ClientLoader.  this is a function which we will use often.
+	
+- inside Employee in ManageDialog, it obtains employees from storageService
+	inside the actual html.  best to change that to its own local
+	employeeList array inside the component, and load it some way inside
+	the component.
+	
+- local storage must check if id is assigned, if not, not create the entry.  In general
+	need to implement validation in all of the forms
+
+-	[can't recreate] updating a service inside manager window doesn't work, seems to create
+	a new service with jacked up fields, and does not delete
+	the old one.
+
+- [DONE] add a notes object with fields, id, date, owner, content.  primarily looking
+	to add it to all objects.... especially appointment and clients
+
+- [DONE]finish the employee menu inside ManageDialog (inside AddEmployee)
+	- [DONE] export person editor into own class so can use the same object to
+	view and edit clients and all that
+
+- [DONE] work on the manage menu: let User.Service return the allowable menus (make
+	a stub to return all menus by default, for future expansion)
+	probably use an enum for this.
+	- [IN PROGRESS] best to integrate this into one component, away from the mainView.html
+	as it will get messy because of the many sub-menus
+
+- [DONE] move out menu out of calendar component and into its own component.
+use input and output directives only.
+- [DONE] map out calendar service on UML with all of its functions
+- [DONE] finish create employee dialog, then insert into, then create admin menu, where it hides
+the calendar menu and uses main area for that stuff.
+

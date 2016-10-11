@@ -1,0 +1,65 @@
+
+<div style = "display: flex; margin-bottom: 1mm"
+>
+	<!--<div class = button-container>-->
+	<button 
+	class="button-minus" [class.selected]="isSelected"
+		(click) = "onMinusClicked()">
+			◀</button>
+			<!--</div>-->
+	
+	<!--<div class = "button-container">-->
+	<button 
+	class="button" [class.selected]="isSelected"
+		(click) = "onClicked()">
+			{{titleLabel}}</button>
+			<!--</div>-->
+			
+	<!--<div class = "button-container">-->
+	<button 
+	class="button-plus" [class.selected]="isSelected"
+		(click) = "onPlusClicked()">
+		▶</button>
+		<!--</div>-->
+	
+	<div class = "clear"></div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<div class = "border">
+<table class = "border">
+  <tr>
+    <td>
+			
+			<button class = "button2"
+			[class.selected]="isSelected"
+			(click) = "onMinusClicked()">
+			◀</button>
+			
+		</td>
+    <td>
+			
+			<button class = "button2"
+		[class.selected]="isSelected"
+			(click) = "onClicked()">
+			{{titleLabel}}</button>
+			
+		</td> 
+    <td>
+			
+			<button class = "button2"
+			[class.selected]="isSelected"
+			(click) = "onPlusClicked()">
+			▶</button>
+			
+		</td>
+  </tr>
+</table>
+</div>-->

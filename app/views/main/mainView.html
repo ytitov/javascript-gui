@@ -1,0 +1,91 @@
+<!--Main view declared in app.ts-->
+
+<!--this is the main menu-->
+
+<div style="width: 4.5cm; height: 100%; position: fixed;
+	 top: 0px; left: 0px; background-color: white;
+	 z-index: 899;" align = "left">
+	
+	<button class = "button"
+		(click)="handleShowDialogClicked()">
+			Show Dialog
+	</button>
+	
+	<button class = "button"
+		(click)="handleShowManageDialogClicked()">
+			Manage Menu
+	</button>
+	
+	<!--Calendar Menu:-->
+	<calendar-menu *ngIf="showCalendarMenu"
+		[date] = "calendarService.getStartDate()"
+		[userID] = "userService.getSelectedUser().getId()"
+		[selectedDate] = "calendarService.getSelectedDate()"
+		(appointment) = "handleNewAppointmentClick($event)"
+		>
+	</calendar-menu>
+		
+		
+			
+</div>
+
+
+
+
+<!--Main content here-->
+<div style="position: absolute; left: 4.5cm; top: 0px; right: 0px"
+>
+	
+	<!--All of the popups-->
+	<!--This is a demo popup-->
+	<dialog-component *ngIf="showDialog"
+	(cancel)="handleCancelClicked()"
+	(accept)="handleAcceptClicked()"
+	>
+		<div title>I render in title.</div>
+    <div menu>I render in menu.</div>
+    <div body>I render in body.</div>
+	
+	</dialog-component>
+	
+	<manage-dialog-component
+	*ngIf="showManagerDialog"
+	(cancel)="handleManageCancelClicked($event)"
+	(accept)="handleManageAcceptClicked($event)"
+	[showEmployeeButton] = "true"
+	[showClientButton] = "true"
+	[showProductButton] = "true"
+	[showServiceButton] = "true"
+	[showScheduleButton] = "true"
+	>
+	</manage-dialog-component>
+	
+	<!--this is replacing add apointment view component-->
+	<add-appointment-dialog-component *ngIf="showAddApopintmentDialog"
+	[selectedDate] = "selectedDate"
+	[timeLabel] = "selectedTimeLabel"
+	(cancel) = "handleCancelAddAppointment($event)"
+	(accept) = "handleAcceptAddAppointment($event)"
+	>
+	
+	</add-appointment-dialog-component>
+	
+	<!--I think this needs to go:-->
+	<add-employee-component *ngIf="showAddEmployee"
+	[lastName]=""
+	[firstName]=""
+	(newEmployeeOutput)="handleAddRecord($event)"
+	>
+	</add-employee-component>
+	
+	<!--the main calendar view-->
+
+	<main-calendar-view-component 
+	(selectDateOutput)="mainCalendarComponentDateUpdate($event)"
+	(selectEmployeeOutput)="mainCalendarComponentEmployeeUpdate($event)"
+	(selectTimeOutput) = "mainCalendarComponentTimeSelected($event)"
+	[itemList]="displayedAppointmentList"
+	>
+	</main-calendar-view-component>
+	
+</div>

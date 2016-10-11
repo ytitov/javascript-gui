@@ -1,0 +1,124 @@
+.button-plus {
+	/*position: absolute;*/
+	display: inline-block;
+    /*float: left;*/
+	
+	background-color: lightslategray;
+	/*padding: 1px;*/
+	border-style: solid;
+	border-radius: 0mm 0mm 6mm 0mm;
+	border-width: 3px 3px 3px 0;
+	border-color: black;
+	width: 10mm;
+	/*margin-inline-start: 0;
+	margin-inline-end: 0;*/
+	margin: 0px;
+}
+
+.button-plus.selected {
+	border-color: darkred;
+}
+
+.button-plus:focus {
+	outline: none;
+}
+
+.button-plus:selection {
+	background-color: white;
+}
+
+.button-minus {
+	/*position: absolute;*/
+	display: inline-block;
+    /*float: left;*/
+	
+	background-color: lightslategray;
+	/*padding: 1px;*/
+	border-style: solid;
+	border-radius: 6mm 0mm 0mm 0mm;
+	border-width: 3px 0 3px 3px;
+	border-color: black;
+	width: 10mm;
+	/*margin-inline-start: 0;
+	margin-inline-end: 0;*/
+	margin: 0px;
+}
+
+.button-minus.selected {
+	border-color: darkred;
+}
+
+.button-minus:focus {
+	outline: none;
+}
+
+.button {
+	
+	/*left: 10mm;*/
+	/*right: 10mm;*/
+	display: inline-block;
+    /*float: left;*/
+	background-color: slategrey;
+	/*padding: 1px;*/
+	border-style: solid;
+	border-radius: 0mm 0mm 0mm 0mm;
+	border-width: 3px 0 3px 0;
+	border-color: black;
+	margin: 0px;
+	/*width: 20mm;*/
+	
+}
+
+.button.selected {
+	border-color: darkred;
+}
+
+.button:focus {
+	outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button2 {
+	background-color: rgba(0,0,0,0);
+	border-style: none;
+}
+
+.border {
+	border-style: solid;
+	border-radius: 0mm 6mm 0mm 6mm;
+	border-width: 3px;
+	border-color: black;
+	background-color: white;
+}

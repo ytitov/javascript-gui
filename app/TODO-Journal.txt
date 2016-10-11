@@ -1,0 +1,22 @@
+18 July:
+	Employee is complete at this point, fixed previous prob.
+
+16 July:
+	Employee is getting near completion.  Can't delete notes at this point, need to
+	implement that.
+
+15 July:
+	Working on using the new Person component instead of the Person edit component
+	so not done yet.  Right now updating and adding employees is not working properly
+
+18 June:
+	At this point ManageDialog, under Client and Employee, are not using the GuiGTO's 
+	so I'm passing the object themselves around.  Not sure if I like that, and the
+	whole updating and removing is kind of a cluster.  It relies a lot on loading
+	and reloading whole lists.  This is okay maybe for Employees, but not for clients,
+	as there may be many of them.  Thus, the loaders, should have a need a 
+	load by id functions too.
+	
+	TODO as of now: really redesign these components (best to just add them to menu
+	so we're not destroying the current ones, so there is some sort of functionality)
+	or just fork.  in either case they must be redesigned.

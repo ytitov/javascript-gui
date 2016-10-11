@@ -1,0 +1,105 @@
+
+<!--TODO: this thing is looking weird.  especially with max-height of 70
+seems broken.  good nuff for now-->
+<div style = "position: relative; width: 5cm; top: 0; bottom: 0px;
+left: 0px; max-height: 70%;
+overflow-y:auto">
+	<button *ngFor="let item of storageService.employeeList"
+	style = "width: 100%"
+	(click) = "employeeClicked(item)">
+		{{item.getLabel()}}
+	</button>
+	
+</div>
+
+
+<!--The form:-->
+
+<div style = "position: absolute; left: 5.5cm; top: 0px; bottom: 0px;
+right: 0px
+overflow-y:auto">
+
+
+<!--The menu buttons:-->
+
+<div menu class="tile_div">
+
+
+		<button *ngIf = "showEditButton"
+		class = "dialog-button-menu"
+		(click)="editButtonClicked()">Edit</button>
+	
+	
+	
+		<button *ngIf = "showSubmitButton"
+		class = "dialog-button-menu"
+		(click)="submitButtonClicked()">Submit</button>
+	
+	
+	
+	<button *ngIf = "showAddButton"
+	class = "dialog-button-menu"
+	(click)="addEmployeeButtonClicked()">Add Employee</button>
+	
+	
+	
+	<button *ngIf = "showDeleteButton"
+	class = "dialog-button-menu"
+	(click)="deleteButtonClicked()">{{delButtonLabel}}</button>
+	
+	
+
+	<button *ngIf = "showCancelDeleteButton"
+	class = "dialog-button-menu"
+	(click)="cancelDeleteButtonClicked()">Cancel Delete</button>
+	
+	<button *ngIf = "showCancelButton"
+	class = "dialog-button-menu"
+	(click) = "cancelButtonClicked()">Cancel</button>
+	
+	
+	<div class="clear"></div>
+	
+	</div> <!-- end menu -->
+	
+	<!--the form:-->
+	
+	<!--<person-edit-component
+	[(userId)]="userId"
+	[(phone)]="phone"
+	[(firstName)]="firstName"
+	[(lastName)]="lastName"
+	[(address1)]="address1"
+	[(address2)]="address2"
+	[(city)]="city"
+	[(state)]="state"
+	[(zip)]="zip"
+	[(email)]="email"
+	[canEditFields]="canEditFields"
+	[noteList] = "noteList"
+	(addNoteClicked) = "handleAddNoteClicked($event)"
+	(delNoteClicked) = "handleDelNoteClicked($event)">
+		</person-edit-component>-->
+		
+	NEW PERSON COMPONENT:
+	
+	<person-component
+	[(userId)] = "userId"
+	[(phone)] = "phone"
+	[(firstName)] = "firstName"
+	[(lastName)] = "lastName"
+	[(address1)] = "address1"
+	[(address2)] = "address2"
+	[(city)] = "city"
+	[(state)] = "state"
+	[(zip)] = "zip"
+	[(email)] = "email"
+	[canEditFields]="canEditFields"
+	[noteList] = "noteList"
+	(newNote) = "handleNewNote($event)"
+	(newPerson) = "handleNewPerson($event)"
+	(updatePerson) = "handleUpdatePerson($event)"
+	>
+	</person-component>
+
+</div>

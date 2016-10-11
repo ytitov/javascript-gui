@@ -1,0 +1,121 @@
+
+<!--TODO: this thing is looking weird.  especially with max-height of 70
+seems broken.  good nuff for now-->
+<!--<div style = "position: relative; width: 7cm; top: 0; bottom: 0px;
+left: 0px; max-height: 70%;
+overflow-y:auto">-->
+<div style = "display: block; float: left; width: 30%; height: 70%;
+margin-bottom: 2mm;
+overflow-y:auto">
+
+
+<input
+	class = "search-input"
+	[(ngModel)]="searchInput" placeholder="Search services"
+	(ngModelChange)="searchInputChanged()">
+	
+	
+	<div *ngFor="let item of serviceList"
+	class = "service-button"
+	style = "width: 100%"
+	[class.selected] = "item.id==selectedService.id"
+	(click) = "serviceClicked(item)">
+	
+	<div style = "display: block; float: left; min-width: 1cm; width: 20%">
+		${{item.getPriceWholeNum()}}.{{item.getPriceDecimal()}}
+	</div>
+	<div style = "display: block; float: left; width: 50%;">
+		{{item.getTitle()}}
+	</div>
+	<div class = "clear"></div>	
+	<div> Description: {{item.getDescription()}}</div>
+	</div>
+	
+</div>
+
+<!--The form:-->
+
+<!--<div style = "position: absolute; left: 7.5cm; top: 0px; bottom: 0px;
+right: 0px
+overflow-y:auto">-->
+<div style = "display: block; float: left; width: 68%; height: 70%;
+overflow-y:auto; margin-left: 2%;">
+
+<!--The menu buttons:-->
+
+<div menu class="tile_div">
+	
+	<button *ngIf = "showEditButton"
+	class = "dialog-button-menu"
+	(click)="editButtonClicked()">Edit</button>
+	
+	
+	
+		<button *ngIf = "showSubmitButton"
+		class = "dialog-button-menu"
+		(click)="submitClicked()">Submit</button>
+	
+	
+	
+	<button *ngIf = "showAddButton"
+	class = "dialog-button-menu"
+	(click)="addServiceButtonClicked()">Create Service</button>
+	
+	
+	
+	<button *ngIf = "showDeleteButton"
+	class = "dialog-button-menu"
+	(click)="deleteButtonClicked()">{{delButtonLabel}}</button>
+	
+	
+
+	<button *ngIf = "showCancelDeleteButton"
+	class = "dialog-button-menu"
+	(click)="cancelDeleteButtonClicked()">Cancel Delete</button>
+	
+	<button *ngIf = "showCancelButton"
+	class = "dialog-button-menu"
+	(click) = "cancelButtonClicked()">Cancel</button>
+	
+	
+	<div class="clear"></div>
+	
+	Employee ID: {{employeeId}}
+	
+	<div menu class="tile_div">
+		
+	<input
+	[disabled]="!canEditFields"
+	[(ngModel)]="title" placeholder="Service title"
+	>
+	
+	
+	
+	Price: 
+	
+	<input
+	[disabled]="!canEditFields"
+	[(ngModel)]="priceString" placeholder="Enter as: 0.00"
+	(ngModelChange)="priceInputChanged()">
+	
+	</div> <!--end tile div-->
+	
+	<div class="clear"></div>
+	
+	<textarea
+	style = "width: 100%; height: 50%;"
+	[disabled]="!canEditFields"
+	[(ngModel)]="description" placeholder="Description"
+	></textarea>
+	
+	<increment-button 
+	[titleLabel]="'Time Length: '+timeString"
+	[isSelected]="false"
+	(plusClicked) = "increaseTimeClicked()"
+	(minusClicked) = "decreaseTimeClicked()"
+	></increment-button>
+	
+	
+	</div> <!-- end menu -->
+
+</div>

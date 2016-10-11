@@ -1,0 +1,117 @@
+<dialog-component
+	(cancel) = "cancelClicked()"
+	(accept) = "acceptClicked()"
+	[showAccept] = "true"
+	>
+	
+	<div title> 
+		
+			<increment-button style = "float: left"
+				[titleLabel]="'New Appointment Time: '+timeHoursLabel+':'+timeMinutesLabel"
+				[isSelected]="false"
+				(plusClicked) = "increaseTimeClicked()"
+				(minusClicked) = "decreaseTimeClicked()">
+			</increment-button>
+		
+			<increment-button style = "float: left"
+				[titleLabel]="'Appointment Duration: '+lengthHoursLabel+':'+lengthMinutesLabel"
+				[isSelected]="false"
+				(plusClicked) = "increaseLengthClicked(5)"
+				(minusClicked) = "increaseLengthClicked(-5)">
+			</increment-button>
+			
+			
+			<div class = "clear"></div>
+		
+		
+	</div>
+	
+	<div menu>
+		
+		<button class = "button"
+			(click) = "selectEmployeeClicked()">
+			Selected Employee: {{selectedEmployeeLabel}}
+			</button>
+			
+		<button class = "button"
+			(click) = "selectClientClicked()">
+			Selected Client: {{selectedClientLabel}}
+			</button>
+	</div> <!-- end menu -->
+			
+	<div body>
+		
+		<!--Main appointment view:-->
+		
+		<div *ngIf = "activeMenu == mainMenuID">
+			
+			<!--This whole div contains the search and selection of services-->
+			<div style = "display: block; float: left; width: 30%; height: 70%;
+				margin-bottom: 2mm;
+				overflow-y:auto">
+
+
+				<input
+					class = "search-input"
+					[(ngModel)]="searchInput" placeholder="Search services"
+					(ngModelChange)="searchInputChanged()">
+					
+					
+				<div *ngFor="let item of loadedServiceList"
+					class = "service-button"
+					style = "width: 100%"
+					[class.selected] = "item.id==selectedService.id"
+					(click) = "serviceClicked(item)">
+					
+					<div style = "display: block; float: left; min-width: 1cm; width: 20%">
+							${{item.getPriceWholeNum()}}.{{item.getPriceDecimal()}}
+					</div>
+					<div style = "display: block; float: left; width: 50%;">
+						{{item.getTitle()}}
+					</div>
+					<div class = "clear"></div>	
+					<div> Description: {{item.getDescription()}}</div>
+				</div>  
+			</div>
+			
+			<!--Displays the list of added services to appointment-->
+			<div style = "display: block; float: left; width: 68%; height: 70%;
+				overflow-y:auto; margin-left: 2%;">
+				Services to Perform:
+				<div *ngFor="let item of serviceList">
+					{{item.getTitle()}}
+					{{item.getLengthMinutes()}} minutes	
+				</div>
+			</div>
+		
+		</div> <!--End main meni-->
+		
+		<!--The service selection component-->
+		
+		<service-component *ngIf = "activeMenu == serviceMenuID">
+		</service-component>
+		
+		<!--Employee selection menu-->
+		
+		<div *ngIf = "activeMenu == employeeMenuID"
+			style = "overflow-y:auto">
+			<div *ngFor = "let employee of employeeList">
+				<button class = "button"
+					(click) = "employeeItemClicked(employee)">
+					{{employee.getLabel()}}
+				</button>
+			</div>
+		</div>
+		
+		<!--The client selection component-->
+		
+		
+		<client-component *ngIf = "activeMenu == clientMenuID"
+		(selectClientOutput) = "handleSelectClient($event)">
+		</client-component>
+		
+	</div> <!-- end body -->
+		
+	
+	
+</dialog-component>

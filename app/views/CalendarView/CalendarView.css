@@ -1,0 +1,113 @@
+/*  MENU BUTTONS FOR CALENDAR */
+
+.menu-button-normal {
+	display: inline-block;
+	float: left;
+	width: 4cm;
+	
+	background-color: slategrey;
+	padding: 1px;
+	border-style: solid;
+	border-radius: 6mm 0mm 6mm 0mm;
+	border-width: 3px 3px 3px 3px;
+	border-color: black;
+}
+
+.menu-button-normal-selected {
+	display: inline-block;
+	float: left;
+	width: 4cm;
+	
+	background-color: slategrey;
+	padding: 1px;
+	border-style: solid;
+	border-radius: 6mm 0mm 6mm 0mm;
+	border-width: 3px 3px 3px 3px;
+	border-color: darkred;
+}
+
+.element {
+	background-color: rgba(239, 255, 135, .5);
+	padding: 1px;
+	border-style: solid;
+	border-radius: 0px 6mm 0px 6mm;
+	border-width: 1px;
+	border-color: rgba(0,0,0,.5);
+	/*z-index: 100;*/
+	/*pointer-events: none; */  /* really want to know about these events */
+}
+
+.element.disabled {
+	pointer-events: none;
+}
+
+.time-label {
+	text-align: left;
+	border-style: solid;
+	border-width: 2px 0px 2px 0px;
+	border-color: lightgray;
+	background-color: rgba (50, 0, 0, 0.5);
+	/*z-index: 99;*/
+	min-width: 100%;
+}
+
+/* not using normal :hover because im highlighting
+two time labels at same time where both are linked
+to one hoveringTimeLabel */
+.time-label.hovering {
+	border-color: darkred;
+	/*background-color: lightgray;*/
+}
+
+.time-label:focus {
+	outline: none;
+}
+
+.time-label:active {
+	background-color: yellow;
+}
+
+.date-col-element {
+	border-radius: 3mm 3mm 0mm 0mm;
+	border-style: solid;
+	border-width: 2px 1px 0px 1px;
+	border-color: black;
+	background-color: slategrey;
+}
+
+.date-col-element.selected {
+	font-weight: bold;
+	background-color: rgba(160, 180, 220, 1);
+}
+
+.date-column-label {
+	display: table-cell;
+  vertical-align: middle;
+	text-align: center;
+	
+}
+
+.user-col-element {
+	border-style: solid;
+	border-width: 0px 1px 2px 1px;
+	border-color: black;
+	background-color: slategrey;
+	border-radius: 0mm 0mm 3mm 3mm;
+	/*border-width: 0px;*/
+}
+
+.user-col-element.selected {
+	font-weight: bold;
+	background-color: rgba(160, 180, 220, 1);
+}
+
+.user-col-element:focus {
+	outline: none;
+}
+
+.user-col-label {
+	padding: 4px; /* NOTE: THIS CHANGES THE ACTUAL WIDTH OF THE COLUMN ITEM*/
+	display: table-cell;
+  vertical-align: middle;
+	text-align: left;
+}

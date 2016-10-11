@@ -1,0 +1,95 @@
+.dialog {
+	position: fixed;
+	background-color: grey;
+	border-style: solid;
+	border-radius: 6mm;
+	border-width: 6mm;
+	border-color: grey;
+	top: 50;
+	left: 50;
+	right: 50;
+	bottom: 50;
+	z-index: 999;
+	animation: fadein 300ms linear forwards;
+  /*animation: fadeinout 4s linear forwards;*/
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/*This is the background which covers the screen for the dialog*/
+.dialog-border {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 998;
+	position: fixed;
+	background-color: rgba(255,255,255,.8);
+	animation: fadein 300ms linear forwards;
+}
+
+.menu-box {
+	position: relative;
+	border-width: 5px 0px 5px 0px;
+	border-style: solid;
+	border-color: darkgray;
+	background-color: darkgray;
+}
+
+.title-box {
+	font-weight: bold;
+}
+
+/*buttons stuff */
+
+.tile_div a {
+    display: block;
+    float: left;
+    /*height: 50px;
+    width: 50px;*/
+    margin-right: 5px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+.title_div a.last {
+    margin-right: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.dialog-button-menu {
+	animation: fadein 300ms linear forwards;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+/* search bar for client searching */
+
+.search-input {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	width: 100%;
+}
+
+.service-button {
+	cursor: pointer; cursor: hand;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	border-width: 0 0 1 0;
+}
+
+.service-button.selected {
+	background-color: azure;
+}

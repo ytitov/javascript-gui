@@ -1,0 +1,43 @@
+<div class="dialog-border">
+	<div class="dialog">
+		
+		
+		
+		
+		<!--Placeholders for content-->
+		<div title class = "title-box">
+			<ng-content select="[title]"></ng-content>
+    </div>
+    <div menu class = "menu-box">
+      <ng-content select="[menu]"></ng-content>
+    </div>
+    <div body style = "position: relative; width: 100%;
+			top: 5px">
+      <ng-content select="[body]"></ng-content>
+    </div>
+		
+		
+		
+		
+		
+		<div style = "position: absolute; bottom: 0px; right: 0px">
+			
+			<button class = "button"
+			(click)="cancelClicked()">
+				<div style = "position: relative">
+					{{cancelText}}
+				</div>
+			</button>
+			
+			<button *ngIf = "showAccept"
+			class = "button"
+			(click)="acceptClicked()">
+				<div style = "position: relative">
+					{{acceptText}}
+				</div>
+			</button>
+		
+		</div>
+
+	</div>
+</div>
